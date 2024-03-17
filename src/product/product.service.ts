@@ -9,7 +9,7 @@ export class ProductService {
   create(createProductInput: CreateProductInput) {
     /***
      * 
-      {
+      Variables: {
         "createProductInput": {
           "name": "RTX-2050", 
           "categories": ["GPU", "Graphics", "RTX"], 
@@ -72,7 +72,7 @@ export class ProductService {
 
   update(id: number, updateProductInput: UpdateProductInput) {
     /**
-     {
+     Variables: {
         "updateProductInput":{
           "id": 4,
           "name": "RTX-2050", 

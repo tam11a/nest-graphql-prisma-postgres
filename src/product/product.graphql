@@ -1,0 +1,41 @@
+type Product {
+  id: Int!
+  name: String!
+  categories: [String]
+  description: String
+  price: Float!
+  rent_price: Float
+  rent_module: String
+  created_at: String
+  updated_at: String
+}
+
+input CreateProductInput {
+  name: String!
+  categories: [String]
+  description: String
+  price: Float!
+  rent_price: Float
+  rent_module: String
+}
+
+input UpdateProductInput {
+  id: Int!
+  name: String!
+  categories: [String]
+  description: String
+  price: Float!
+  rent_price: Float
+  rent_module: String
+}
+
+type Query {
+  product: [Product]!
+  product(id: Int!): Product
+}
+
+type Mutation {
+  createProduct(createProductInput: CreateProductInput!): Product!
+  updateProduct(updateProductInput: UpdateProductInput!): Product!
+  removeProduct(id: Int!): Product
+}

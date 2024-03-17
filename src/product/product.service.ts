@@ -7,6 +7,17 @@ export class ProductService {
   constructor(private prisma: PrismaService) {}
 
   create(createProductInput: CreateProductInput) {
+    /***
+     * 
+      mutation CreateProduct($createProductInput: CreateProductInput!) {
+        createProduct(createProductInput: $createProductInput) {
+          id
+          name
+          categories
+          price
+        }
+      }
+     */
     return this.prisma.product.create({
       data: {
         name: createProductInput?.name,
@@ -15,12 +26,14 @@ export class ProductService {
         price: createProductInput?.price,
         rent_price: createProductInput?.rent_price,
         rent_module: createProductInput?.rent_module,
+        created_at: new Date(),
+        updated_at: new Date(),
       },
     });
   }
 
   findAll() {
-    return `This action returns all product`;
+    return this.prisma.product.findMany();
   }
 
   findOne(id: number) {
@@ -28,6 +41,7 @@ export class ProductService {
   }
 
   update(id: number, updateProductInput: UpdateProductInput) {
+    console.log(updateProductInput);
     return `This action updates a #${id} product`;
   }
 

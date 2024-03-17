@@ -11,7 +11,7 @@ export class ProductResolver {
     return this.productService.create(createProductInput);
   }
 
-  @Query('product')
+  @Query('products')
   findAll() {
     return this.productService.findAll();
   }

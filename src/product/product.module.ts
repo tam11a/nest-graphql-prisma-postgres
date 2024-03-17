@@ -4,7 +4,7 @@ import { ProductResolver } from './product.resolver';
 import { PrismaModule } from 'src/prisma/prisma.module';
 
 @Module({
-  imports: [PrismaModule],
   providers: [ProductResolver, ProductService],
+  imports: [PrismaModule],
 })
 export class ProductModule {}

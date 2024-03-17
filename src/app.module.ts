@@ -9,11 +9,12 @@ import { ProductModule } from './product/product.module';
 
 @Module({
   imports: [
+    PrismaModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       typePaths: ['./**/*.graphql'],
       // used apollo playground
-      playground: false,
+      playground: true,
       // plugins: [ApolloServerPluginLandingPageLocalDefault()],
       // this will auto generate a graphql types
       definitions: {
@@ -21,7 +22,6 @@ import { ProductModule } from './product/product.module';
         outputAs: 'class',
       },
     }),
-    PrismaModule,
     ProductModule,
   ],
   controllers: [AppController],

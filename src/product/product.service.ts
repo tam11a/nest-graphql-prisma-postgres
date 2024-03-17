@@ -1,13 +1,22 @@
 import { Injectable } from '@nestjs/common';
 import { CreateProductInput, UpdateProductInput } from 'src/graphql';
-import { PrismaModule } from 'src/prisma/prisma.module';
+import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class ProductService {
-  constructor(private prisma: PrismaModule) {}
+  constructor(private prisma: PrismaService) {}
 
   create(createProductInput: CreateProductInput) {
-    return 'This action adds a new product';
+    return this.prisma.product.create({
+      data: {
+        name: createProductInput?.name,
+        categories: createProductInput?.categories,
+        description: createProductInput?.description,
+        price: createProductInput?.price,
+        rent_price: createProductInput?.rent_price,
+        rent_module: createProductInput?.rent_module,
+      },
+    });
   }
 
   findAll() {
